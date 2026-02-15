@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# JSONotations – Advanced Frontend JSON Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+JSONotations is a premium, client-side JSON workspace designed for developers who demand superior visualization, security, and usability. It replaces basic online editors with a powerful, intuitive environment that works entirely in your browser.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Editor**: Real-time syntax highlighting, error detection, and automatic formatting/minification.
+- **Deep Visualization**: 
+  - **Tree View**: Navigate complex structures with collapsible, searchable nodes.
+  - **Table View**: Analyze arrays of objects in a clean, spreadsheet-like interface.
+  - **Visual Diff**: Compare two JSON sets side-by-side with highlighted changes.
+- **Schema Inference**: Automatically generate and preview JSON Schema from your data.
+- **Privacy First**: 100% client-side processing. Your data never leaves your browser.
+- **Developer Tools**: Keyboard shortcuts, export to CSV/PDF, and drag-and-drop file support.
+- **Premium UI**: Modern dark-mode aesthetic with micro-interactions and smooth animations.
 
-## Expanding the ESLint configuration
+## 🛠️ Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Framework**: React + TypeScript
+- **Styling**: Tailwind CSS + Shadcn UI
+- **Icons**: Lucide React
+- **Animations**: Framer Motion
+- **Editor**: CodeMirror 6
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🏁 Getting Started
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone the repository.
+2. Install dependencies: `pnpm install`
+3. Start the development server: `npm run dev`
+4. Open the editor at `http://localhost:5173/editor`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⌨️ Keyboard Shortcuts
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- `Shift + Alt + F`: Format JSON
+- `Ctrl + S`: Download JSON
+- `Alt + 1-5`: Switch Editor Tabs (Editor, Tree, Table, Diff, Schema)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+© 2026 JSONotations. Built for Developers.

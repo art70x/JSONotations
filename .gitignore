@@ -10,7 +10,9 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+output
 *.local
+package-lock.json
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +24,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.sync
+history/*.json
+.vite_cache
