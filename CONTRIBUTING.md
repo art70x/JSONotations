@@ -5,7 +5,7 @@ Thank you for your interest in contributing to JSONotations! We welcome contribu
 ## How to Contribute
 
 1. **Fork the Repository**: Create your own fork of the project.
-2. **Clone the Fork**: `git clone https://github.com/your-username/jsonotations.git`
+2. **Clone the Fork**: `git clone https://github.com/art70x/JSONotation.git`
 3. **Create a Branch**: `git checkout -b feature/your-feature-name`
 4. **Make Changes**: Implement your feature or fix.
 5. **Lint Your Code**: Ensure your code passes the linting checks: `npm run lint`
@@ -21,6 +21,7 @@ Thank you for your interest in contributing to JSONotations! We welcome contribu
 ## Reporting Issues
 
 If you find a bug, please open an issue with:
+
 - A clear description of the problem.
 - Steps to reproduce the bug.
 - Any relevant JSON data (anonymized).

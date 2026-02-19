@@ -2,10 +2,18 @@
 
 JSONotations is a premium, client-side JSON workspace designed for developers who demand superior visualization, security, and usability. It replaces basic online editors with a powerful, intuitive environment that works entirely in your browser.
 
+## Theme
+
+To get theme, run:
+
+```sh
+pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=base&style=nova&baseColor=neutral&theme=sky&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=vite&rtl=false" --template vite
+```
+
 ## 🚀 Key Features
 
 - **Interactive Editor**: Real-time syntax highlighting, error detection, and automatic formatting/minification.
-- **Deep Visualization**: 
+- **Deep Visualization**:
   - **Tree View**: Navigate complex structures with collapsible, searchable nodes.
   - **Table View**: Analyze arrays of objects in a clean, spreadsheet-like interface.
   - **Visual Diff**: Compare two JSON sets side-by-side with highlighted changes.
@@ -22,12 +30,40 @@ JSONotations is a premium, client-side JSON workspace designed for developers wh
 - **Animations**: Framer Motion
 - **Editor**: CodeMirror 6
 
-## 🏁 Getting Started
+## 🚀 Quick Start
 
-1. Clone the repository.
-2. Install dependencies: `pnpm install`
-3. Start the development server: `npm run dev`
-4. Open the editor at `http://localhost:5173/editor`
+### Prerequisites
+
+- Node.js 20+
+- npm, pnpm, or bun
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/art70x/JSONotation.git
+
+# Navigate to the project
+cd JSONotation
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+The app will be available at `http://localhost:3000`
+
+### Build for Production
+
+```bash
+# Create production build
+npm run build
+
+# Preview production build
+npm run preview
+```
 
 ## ⌨️ Keyboard Shortcuts
 
@@ -35,8 +71,24 @@ JSONotations is a premium, client-side JSON workspace designed for developers wh
 - `Ctrl + S`: Download JSON
 - `Alt + 1-5`: Switch Editor Tabs (Editor, Tree, Table, Diff, Schema)
 
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](https://github.com/art70x/JSONotation/blob/main/CONTRIBUTING.md) for guidelines.
+
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is open source and available under the [MIT License](https://github.com/art70x/JSONotation/blob/main/LICENSE).
 
-© 2026 JSONotations. Built for Developers.
+## 🙏 Acknowledgments
+
+- [shadcn/ui](https://ui.shadcn.com/) – Provides the accessible, composable component system and design foundation that power the refined, production-grade UI.
+- [@uiw/react-codemirror](https://github.com/uiwjs/react-codemirror) – Powers the core editing engine through CodeMirror 6’s modular architecture, enabling structured JSON parsing, real-time syntax validation, extensible behaviors, and high-performance rendering.
+- [@unhead/react](https://github.com/unjs/unhead/tree/main/packages/react) – Enables reactive and scalable document head management for dynamic metadata, improving maintainability and SEO control.
+- [Nuxpert](https://github.com/MFM-347/nuxpert) – Inspired the project’s architecture, CI workflow, formatting standards, and Vite configuration.
+- [MeDo](https://medo.dev/) – Served as the original prototype foundation.
+
+---
+
+<p align="center">
+  Made with ❤️ for the web development community
+</p>

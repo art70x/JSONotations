@@ -1,43 +1,49 @@
-import LandingPage from './pages/LandingPage';
-import EditorPage from './pages/EditorPage';
-import SettingsPage from './pages/SettingsPage';
-import HelpPage from './pages/HelpPage';
-import FAQPage from './pages/FAQPage';
-import type { ReactNode } from 'react';
+import LandingPage from '@/pages/landing-page'
+import EditorPage from '@/pages/editor-page'
+import SettingsPage from '@/pages/settings-page'
+import HelpPage from '@/pages/help-page'
+import FAQPage from '@/pages/faq-page'
+import OgImage from '@/pages/og-image'
+import type { ReactNode } from 'react'
 
 interface RouteConfig {
-  name: string;
-  path: string;
-  element: ReactNode;
-  visible?: boolean;
+  name: string
+  path: string
+  element: ReactNode
+  visible?: boolean
 }
 
 const routes: RouteConfig[] = [
   {
     name: 'Home',
     path: '/',
-    element: <LandingPage />
+    element: <LandingPage />,
   },
   {
     name: 'Editor',
     path: '/editor',
-    element: <EditorPage />
-  },
-  {
-    name: 'Settings',
-    path: '/settings',
-    element: <SettingsPage />
+    element: <EditorPage />,
   },
   {
     name: 'Help',
     path: '/help',
-    element: <HelpPage />
+    element: <HelpPage />,
   },
   {
     name: 'FAQ',
     path: '/faq',
-    element: <FAQPage />
-  }
-];
+    element: <FAQPage />,
+  },
+  {
+    name: 'Settings',
+    path: '/settings',
+    element: <SettingsPage />,
+  },
+  {
+    name: 'OgImage',
+    path: '/og',
+    element: <OgImage />,
+  },
+]
 
-export default routes;
+export default routes
