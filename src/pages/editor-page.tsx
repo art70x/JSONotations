@@ -255,7 +255,7 @@ export default function EditorPage() {
                       variant="ghost"
                       size="icon"
                       className={cn(
-                        'h-9 w-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
+                        'size-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
                         isFormatting && 'bg-primary/10 text-primary',
                       )}
                       onClick={handleFormat}
@@ -281,7 +281,7 @@ export default function EditorPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-9 w-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
+                      className="size-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
                       onClick={minifyJSON}
                       aria-label="Minify JSON"
                     >
@@ -304,7 +304,7 @@ export default function EditorPage() {
                       variant="ghost"
                       size="icon"
                       className={cn(
-                        'h-9 w-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
+                        'size-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
                         isCopying && 'bg-emerald-400/10 text-emerald-400',
                       )}
                       onClick={handleCopy}
@@ -330,7 +330,7 @@ export default function EditorPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-9 w-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
+                      className="size-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
                       onClick={handleDownload}
                       aria-label="Download as .json file"
                     >
@@ -351,7 +351,7 @@ export default function EditorPage() {
                       className="button-hover-scale cursor-pointer"
                       aria-label="Upload JSON file"
                     >
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl text-muted-foreground transition-all hover:bg-secondary/50 hover:text-primary">
+                      <div className="flex size-9 items-center justify-center rounded-xl text-muted-foreground transition-all hover:bg-secondary/50 hover:text-primary">
                         <FileUp className="h-4.5 w-4.5" />
                       </div>
                       <input
@@ -375,7 +375,7 @@ export default function EditorPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-9 w-9 button-hover-scale rounded-xl text-destructive/70 transition-all hover:bg-destructive/10 hover:text-destructive"
+                      className="size-9 button-hover-scale rounded-xl text-destructive/70 transition-all hover:bg-destructive/10 hover:text-destructive"
                       onClick={clearContent}
                       aria-label="Clear all content"
                     >
@@ -394,13 +394,13 @@ export default function EditorPage() {
 
             <div className="flex items-center gap-4">
               <div className="group relative hidden items-center xl:flex">
-                <Search className="absolute left-3.5 h-3.5 w-3.5 text-muted-foreground transition-colors group-focus-within:text-primary" />
+                <Search className="absolute left-3.5 size-3.5 text-muted-foreground transition-colors group-focus-within:text-primary" />
                 <input
                   type="text"
                   placeholder="Search JSON..."
                   value={searchQuery}
                   onChange={(event) => setSearchQuery(event.target.value)}
-                  className="w-48 rounded-xl border border-border/50 bg-secondary/30 py-2 pr-9 pl-9 text-xs font-medium shadow-inner transition-all focus:w-80 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                  className="w-48 rounded-xl border border-border/50 bg-secondary/30 px-9 py-2 text-xs font-medium shadow-inner transition-all focus:w-80 focus:ring-2 focus:ring-primary/20 focus:outline-none"
                   aria-label="Search through JSON data using AND, OR, and quotes"
                 />
                 {searchQuery && (
@@ -418,7 +418,7 @@ export default function EditorPage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full right-0 left-0 z-50 mt-2 max-h-96 space-y-1 overflow-hidden overflow-y-auto rounded-xl border border-border bg-popover p-2 shadow-xl"
+                      className="absolute inset-x-0 top-full z-50 mt-2 max-h-96 space-y-1 overflow-hidden overflow-y-auto rounded-xl border border-border bg-popover p-2 shadow-xl"
                     >
                       <div className="mb-1 border-b border-border px-2 py-1.5 text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
                         Results ({searchResults.length})
@@ -437,7 +437,7 @@ export default function EditorPage() {
                                 {typeof result.value === 'object' ? '{...}' : String(result.value)}
                               </span>
                             </div>
-                            <ArrowDownToLine className="h-3 w-3 shrink-0 text-muted-foreground group-hover/item:text-primary" />
+                            <ArrowDownToLine className="size-3 shrink-0 text-muted-foreground group-hover/item:text-primary" />
                           </button>
                         ))
                       ) : (
@@ -452,9 +452,9 @@ export default function EditorPage() {
               <div className="h-4 w-px bg-border" />
               <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-secondary/20 px-2 py-1 transition-colors">
                 {error ? (
-                  <AlertCircle className="h-3.5 w-3.5 text-destructive" />
+                  <AlertCircle className="size-3.5 text-destructive" />
                 ) : (
-                  <CheckCircle2 className="h-3.5 w-3.5 text-success" />
+                  <CheckCircle2 className="size-3.5 text-success" />
                 )}
                 <span className="text-[10px] font-bold tracking-tighter uppercase">
                   {error ? 'Invalid' : 'Valid'}
@@ -488,13 +488,13 @@ export default function EditorPage() {
                       <div className="sticky top-0 z-10 flex items-center justify-between border-b border-border/40 bg-background/50 px-6 py-4 backdrop-blur-md">
                         <div className="flex items-center gap-3">
                           <div className="rounded-lg bg-primary/10 p-1.5">
-                            <Network className="h-3.5 w-3.5 text-primary" />
+                            <Network className="size-3.5 text-primary" />
                           </div>
                           <span className="text-[10px] font-black tracking-[0.15em] text-muted-foreground uppercase">
                             Live Structure
                           </span>
                         </div>
-                        <RefreshCcw className="h-3.5 w-3.5 animate-spin-slow text-muted-foreground/50" />
+                        <RefreshCcw className="size-3.5 animate-spin-slow text-muted-foreground/50" />
                       </div>
                       <div className="flex-1 overflow-auto p-6">
                         {isParsing ? (
@@ -512,7 +512,7 @@ export default function EditorPage() {
                         ) : (
                           <div className="flex h-full flex-col items-center justify-center space-y-4 font-mono text-sm text-muted-foreground opacity-50">
                             <div className="rounded-full border border-border/50 bg-secondary/20 p-4">
-                              <Edit3 className="h-8 w-8" />
+                              <Edit3 className="size-8" />
                             </div>
                             <p>
                               {error

@@ -148,19 +148,19 @@ const LandingPage = () => {
               <div className="relative aspect-16/10 overflow-hidden rounded-2xl bg-background/80">
                 <div className="flex h-10 items-center gap-2.5 border-b border-border/50 bg-secondary/80 px-5">
                   <div className="flex gap-1.5">
-                    <div className="h-3 w-3 rounded-full bg-red-500/50" />
-                    <div className="h-3 w-3 rounded-full bg-amber-500/50" />
-                    <div className="h-3 w-3 rounded-full bg-emerald-500/50" />
+                    <div className="size-3 rounded-full bg-red-500/50" />
+                    <div className="size-3 rounded-full bg-amber-500/50" />
+                    <div className="size-3 rounded-full bg-emerald-500/50" />
                   </div>
                   <div className="mx-auto text-[11px] font-medium tracking-wide text-muted-foreground uppercase opacity-50">
                     jsonotations-editor.v1
                   </div>
                 </div>
-                <div className="relative h-full w-full">
+                <div className="relative size-full">
                   <img
                     src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_beb1effb-04b1-4251-b6de-c0b3ea5f1087.jpg"
                     alt="JSONotations Interface Preview"
-                    className="h-full w-full object-cover opacity-90 grayscale-[0.2] transition-all duration-700 group-hover:grayscale-0"
+                    className="size-full object-cover opacity-90 grayscale-[0.2] transition-all duration-700 group-hover:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-background/90 via-background/20 to-transparent" />
 
@@ -170,8 +170,8 @@ const LandingPage = () => {
                     transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                     className="absolute top-[20%] right-[10%] z-20 flex items-center gap-4 rounded-2xl border-white/5 p-4 shadow-2xl glass-card backdrop-blur-2xl"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/30 shadow-lg shadow-primary/20 primary-gradient">
-                      <IHugeiconsLayers01 className="h-5 w-5 text-white" />
+                    <div className="flex size-10 items-center justify-center rounded-xl border border-primary/30 shadow-lg shadow-primary/20 primary-gradient">
+                      <IHugeiconsLayers01 className="size-5 text-white" />
                     </div>
                     <div className="text-left">
                       <div className="text-[13px] font-bold">Deep Nesting</div>
@@ -186,8 +186,8 @@ const LandingPage = () => {
                     transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                     className="absolute bottom-[25%] left-[8%] z-20 flex items-center gap-4 rounded-2xl border-white/5 p-4 shadow-2xl glass-card backdrop-blur-2xl"
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500 shadow-lg shadow-emerald-500/20">
-                      <ILucideActivity className="h-5 w-5 text-white" />
+                    <div className="flex size-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500 shadow-lg shadow-emerald-500/20">
+                      <ILucideActivity className="size-5 text-white" />
                     </div>
                     <div className="text-left">
                       <div className="text-[13px] font-bold">Real-time Diff</div>
@@ -250,9 +250,9 @@ const LandingPage = () => {
                   whileHover={{ y: -8, transition: { duration: 0.3 } }}
                   className="group relative overflow-hidden rounded-[1.5rem] p-8 glass-card"
                 >
-                  <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-primary/5 blur-3xl transition-colors group-hover:bg-primary/40" />
-                  <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl border border-border/50 bg-secondary/50 shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                    <feature.icon className={`h-7 w-7 ${feature.color}`} />
+                  <div className="absolute -top-12 -right-12 size-32 rounded-full bg-primary/5 blur-3xl transition-colors group-hover:bg-primary/40" />
+                  <div className="mb-8 flex size-14 items-center justify-center rounded-2xl border border-border/50 bg-secondary/50 shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
+                    <feature.icon className={`size-7 ${feature.color}`} />
                   </div>
                   <h3 className="mb-4 text-xl font-semibold transition-colors group-hover:text-primary">
                     {feature.title}

@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background p-6 text-foreground">
       {/* Background Glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-1/2 rounded-full bg-primary/10 blur-[120px]" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -19,7 +19,7 @@ export default function NotFound() {
         transition={{ duration: 0.5 }}
         className="z-10 text-center"
       >
-        <div className="mx-auto mb-8 flex h-24 w-24 animate-float items-center justify-center rounded-[2rem] border border-primary/20 bg-primary/10 shadow-2xl">
+        <div className="mx-auto mb-8 flex size-24 animate-float items-center justify-center rounded-[2rem] border border-primary/20 bg-primary/10 shadow-2xl">
           <ILucideGhost className="size-12 text-primary" />
         </div>
 

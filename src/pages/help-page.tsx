@@ -64,8 +64,8 @@ export default function HelpPage() {
                 <Card className="cursor-default border-border bg-secondary/10 transition-colors hover:bg-secondary/20">
                   <CardContent className="p-6">
                     <div className="flex flex-col gap-6 xl:flex-row">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                        <guide.icon className="h-6 w-6 text-primary" />
+                      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                        <guide.icon className="size-6 text-primary" />
                       </div>
                       <div className="space-y-4">
                         <div className="space-y-1">
@@ -78,7 +78,7 @@ export default function HelpPage() {
                               key={sIndex}
                               className="flex items-center gap-2 text-sm text-foreground/80"
                             >
-                              <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                              <div className="size-1.5 rounded-full bg-primary" />
                               {step}
                             </li>
                           ))}
