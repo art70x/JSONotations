@@ -43,9 +43,9 @@ export default function ThemeProvider({
   const toggleTheme = () => {
     const resolved =
       theme === 'system'
-        ? globalThis.matchMedia('(prefers-color-scheme: dark)').matches
+        ? (globalThis.matchMedia('(prefers-color-scheme: dark)').matches
           ? 'dark'
-          : 'light'
+          : 'light')
         : theme
 
     setTheme(resolved === 'dark' ? 'light' : 'dark')
