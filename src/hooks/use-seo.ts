@@ -6,13 +6,6 @@ interface Meta {
   author?: string
 }
 
-interface SeoImage {
-  url?: string
-  alt?: string
-  height?: number
-  width?: number
-}
-
 interface Icons {
   favicon?: string
   icon?: string
@@ -22,11 +15,10 @@ interface Icons {
 interface UseSeoOptions {
   meta?: Meta
   icons?: Icons
-  image?: SeoImage
   robots?: string
 }
 
-export function useSeo({ meta, icons, image, robots }: UseSeoOptions) {
+export function useSeo({ meta, icons, robots }: UseSeoOptions) {
   useSeoMeta({
     title: meta?.title,
     description: meta?.description,
@@ -34,20 +26,22 @@ export function useSeo({ meta, icons, image, robots }: UseSeoOptions) {
     // Open Graph
     ogTitle: meta?.title,
     ogDescription: meta?.shortDescription ?? meta?.description,
-    ogImage: image?.url,
-    ogImageAlt: image?.alt,
-    ogImageHeight: image?.height,
-    ogImageWidth: image?.width,
+    ogImage: 'https://jso-n.vercel.app/og.png',
+    ogImageAlt: 'JSONotations: Advanced Frontend JSON Editor',
+    ogImageHeight: 630,
+    ogImageWidth: 1200,
     ogType: 'website',
     ogLocale: 'en_US',
     ogUrl: meta?.url,
 
     // Twitter
-    twitterCard: image?.url ? 'summary_large_image' : 'summary',
+    twitterCard: 'summary_large_image',
     twitterTitle: meta?.title,
     twitterDescription: meta?.shortDescription ?? meta?.description,
-    twitterImage: image?.url,
-    twitterImageAlt: image?.alt,
+    twitterImage: 'https://jso-n.vercel.app/og.png',
+    twitterImageHeight: 630,
+    twitterImageWidth: 1200,
+    twitterImageAlt: 'JSONotations: Advanced Frontend JSON Editor',
     twitterCreator: meta?.author ? `@${meta.author}` : undefined,
 
     // Standard
