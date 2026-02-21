@@ -35,13 +35,13 @@ const head = createHead({
 
 createRoot(document.querySelector('#root')!).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="app-ui-theme">
-      <UnheadProvider head={head}>
+    <UnheadProvider head={head}>
+      <ThemeProvider defaultTheme="dark" storageKey="app-ui-theme">
         <ErrorBoundary>
           <App />
           <Toaster />
         </ErrorBoundary>
-      </UnheadProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </UnheadProvider>
   </StrictMode>,
 )
