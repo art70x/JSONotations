@@ -507,7 +507,7 @@ export default function EditorPage() {
                             </div>
                             <Skeleton className="h-4 w-[220px] bg-muted" />
                           </div>
-                        ) : (parsedData ? (
+                        ) : parsedData ? (
                           <JSONTreeView data={parsedData} filter={searchQuery} />
                         ) : (
                           <div className="flex h-full flex-col items-center justify-center space-y-4 font-mono text-sm text-muted-foreground opacity-50">
@@ -520,7 +520,7 @@ export default function EditorPage() {
                                 : 'Waiting for valid JSON input...'}
                             </p>
                           </div>
-                        ))}
+                        )}
                       </div>
                     </div>
                   </ResizablePanel>
