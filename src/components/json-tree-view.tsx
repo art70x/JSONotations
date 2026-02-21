@@ -1,4 +1,7 @@
-import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from 'components/ui/tooltip'
+import { cn } from '@/lib/utils'
+import { Icon } from '@iconify/react'
+import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
+import { useState } from 'react'
 
 export type JSONValue =
   | string
@@ -69,7 +72,7 @@ export function JSONTreeView({ data, label, depth = 0, filter = '' }: JSONTreeVi
   const renderValue = () => {
     if (data === undefined) return <span className="text-muted-foreground">undefined</span>
     if (data === null) return <span className="text-muted-foreground">null</span>
-    if (typeof data === 'string') return <span className="text-green-400">"{data}"</span>
+    if (typeof data === 'string') return <span className="text-green-400">&qout;{data}&qout;</span>
     if (typeof data === 'number') return <span className="text-orange-400">{data}</span>
     if (typeof data === 'boolean') return <span className="text-blue-400">{String(data)}</span>
     if (isArray) return <span className="text-muted-foreground">Array({data.length})</span>
@@ -80,66 +83,64 @@ export function JSONTreeView({ data, label, depth = 0, filter = '' }: JSONTreeVi
 
   /*  Render  */
   return (
-    <TooltipProvider delayDuration={300}>
-      <div className={cn('select-none', depth > 0 && 'ml-4')}>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <div
-              className={cn(
-                'group flex cursor-pointer items-center gap-1.5 rounded-sm px-2 py-0.5 transition-colors hover:bg-secondary/30',
-                depth === 0 && 'px-0',
-              )}
-              onClick={() => isExpandable && setManualOpen((previous) => !previous)}
-            >
-              {isExpandable ? (
-                isOpen ? (
-                  <IHugeiconsArrowDown01 className="size-3.5 shrink-0 text-muted-foreground" />
-                ) : (
-                  <IHugeiconsArrowRight01 className="size-3.5 shrink-0 text-muted-foreground" />
-                )
-              ) : (
-                <div className="w-3.5 shrink-0" />
-              )}
-
-              <div className="flex items-center gap-2">
-                {label && <span className="text-sm font-medium text-foreground/80">{label}:</span>}
-                <span className="text-sm">{renderValue()}</span>
-              </div>
-            </div>
-          </TooltipTrigger>
-          <TooltipContent
-            side="right"
-            className="border border-border bg-popover px-2 py-1 text-[10px] font-bold tracking-tight text-foreground uppercase"
+    <div className={cn('select-none', depth > 0 && 'ml-4')}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div
+            className={cn(
+              'group flex cursor-pointer items-center gap-1.5 rounded-sm px-2 py-0.5 transition-colors hover:bg-secondary/30',
+              depth === 0 && 'px-0',
+            )}
+            onClick={() => isExpandable && setManualOpen((previous) => !previous)}
           >
-            {getTypeLabel()}
-          </TooltipContent>
-        </Tooltip>
+            {isExpandable ? (
+              isOpen ? (
+                <Icon
+                  icon="hugeicons:arrow-down-01"
+                  className="size-3.5 shrink-0 text-muted-foreground"
+                />
+              ) : (
+                <Icon
+                  icon="hugeicons:arrow-right-01"
+                  className="size-3.5 shrink-0 text-muted-foreground"
+                />
+              )
+            ) : (
+              <div className="w-3.5 shrink-0" />
+            )}
 
-        {isExpandable && isOpen && (
-          <div className="mt-0.5 ml-1.5 border-l border-border/50 pl-1">
-            {isArray &&
-              (data as JSONValue[]).map((item, index) => (
-                <JSONTreeView
-                  key={index}
-                  data={item}
-                  label={String(index)}
-                  depth={depth + 1}
-                  filter={filter}
-                />
-              ))}
-            {isObject &&
-              Object.entries(data as { [key: string]: JSONValue }).map(([key, value]) => (
-                <JSONTreeView
-                  key={key}
-                  data={value}
-                  label={key}
-                  depth={depth + 1}
-                  filter={filter}
-                />
-              ))}
+            <div className="flex items-center gap-2">
+              {label && <span className="text-sm font-medium text-foreground/80">{label}:</span>}
+              <span className="text-sm">{renderValue()}</span>
+            </div>
           </div>
-        )}
-      </div>
-    </TooltipProvider>
+        </TooltipTrigger>
+        <TooltipContent
+          side="right"
+          className="border border-border bg-popover px-2 py-1 text-[10px] font-bold tracking-tight text-foreground uppercase"
+        >
+          {getTypeLabel()}
+        </TooltipContent>
+      </Tooltip>
+
+      {isExpandable && isOpen && (
+        <div className="mt-0.5 ml-1.5 border-l border-border/50 pl-1">
+          {isArray &&
+            (data as JSONValue[]).map((item, index) => (
+              <JSONTreeView
+                key={index}
+                data={item}
+                label={String(index)}
+                depth={depth + 1}
+                filter={filter}
+              />
+            ))}
+          {isObject &&
+            Object.entries(data as { [key: string]: JSONValue }).map(([key, value]) => (
+              <JSONTreeView key={key} data={value} label={key} depth={depth + 1} filter={filter} />
+            ))}
+        </div>
+      )}
+    </div>
   )
 }

@@ -7,7 +7,7 @@ JSONotations is a premium, client-side JSON workspace designed for developers wh
 To get theme, run:
 
 ```sh
-pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=base&style=nova&baseColor=neutral&theme=sky&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=vite&rtl=false" --template vite
+pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=radix&style=nova&baseColor=neutral&theme=sky&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=vite&rtl=false" --template next
 ```
 
 ## 🚀 Key Features

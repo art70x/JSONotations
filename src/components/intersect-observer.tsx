@@ -1,9 +1,11 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 import { Observer } from 'tailwindcss-intersect'
 
 const IntersectObserver = () => {
-  const location = useLocation()
+  const pathname = usePathname()
 
   useEffect(() => {
     // When the location changes, we need to restart the observer
@@ -14,7 +16,7 @@ const IntersectObserver = () => {
     }, 100)
 
     return () => clearTimeout(timer)
-  }, [location])
+  }, [pathname])
 
   return null
 }

@@ -1,23 +1,27 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { toast } from 'sonner'
+import { Icon } from '@iconify/react'
 import { Sidebar } from 'components/sidebar'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from 'components/ui/card'
-import { Switch } from 'components/ui/switch'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'components/ui/card'
 import { Label } from 'components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'components/ui/select'
+import { Switch } from 'components/ui/switch'
+import { motion } from 'framer-motion'
+import type { EditorFontSize, EditorTheme, MonoFont } from 'hooks/use-editor'
+import { useEditor } from 'hooks/use-editor'
+import { useTheme } from 'next-themes'
+import { toast } from 'sonner'
 
 export default function SettingsPage() {
-  useSeo({
-    meta: {
-      title: 'Settings',
-      description:
-        'Customize your editor’s appearance and typography for a personalized coding experience.',
-      shortDescription: 'Set your editor’s look and typography.',
-      url: 'https://jso-n.vercel.app/settings',
-    },
-  })
+  // useSeo({
+  //   meta: {
+  //     title: 'Settings',
+  //     description:
+  //       'Customize your editor’s appearance and typography for a personalized coding experience.',
+  //     shortDescription: 'Set your editor’s look and typography.',
+  //     url: 'https://jso-n.vercel.app/settings',
+  //   },
+  // })
 
   const { theme, setTheme } = useTheme()
 
@@ -66,7 +70,7 @@ export default function SettingsPage() {
               animate={{ scale: 1, opacity: 1 }}
               className="mx-auto mb-6 flex size-16 items-center justify-center rounded-2xl shadow-xl shadow-primary/30 primary-gradient"
             >
-              <IHugeiconsSettings02 className="size-8 text-foreground" />
+              <Icon icon="hugeicons:settings-02" className="size-8 text-foreground" />
             </motion.div>
 
             <h1 className="text-4xl font-black tracking-tight md:text-6xl">Settings</h1>

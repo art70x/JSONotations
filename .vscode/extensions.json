@@ -4,7 +4,6 @@
     "esbenp.prettier-vscode",
     "EditorConfig.EditorConfig",
     "bradlc.vscode-tailwindcss",
-    "antfu.iconify",
-    "ryanlabs.commity-ai"
+    "antfu.iconify"
   ]
 }

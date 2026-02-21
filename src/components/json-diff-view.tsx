@@ -1,7 +1,8 @@
-import ReactDiffViewer from 'react-diff-viewer-continued'
 import { Button } from 'components/ui/button'
-import { Textarea } from 'components/ui/textarea'
 import { Card, CardContent } from 'components/ui/card'
+import { Textarea } from 'components/ui/textarea'
+import { useState } from 'react'
+import ReactDiffViewer from 'react-diff-viewer-continued'
 
 interface JSONDiffViewProperties {
   currentJson: string

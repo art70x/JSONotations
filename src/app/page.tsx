@@ -1,62 +1,66 @@
-import { motion, useScroll, useTransform, type Variants } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { Button } from 'components/ui/button'
-import { Header } from 'components/header'
+'use client'
+
+import { Icon } from '@iconify/react'
 import { Footer } from 'components/footer'
+import { Header } from 'components/header'
+import { Button } from 'components/ui/button'
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const LandingPage = () => {
   const { scrollY } = useScroll()
   const y1 = useTransform(scrollY, [0, 500], [0, 200])
   const y2 = useTransform(scrollY, [0, 500], [0, -150])
 
-  useSeo({
-    meta: {
-      title: 'JSONotations - Advanced Frontend JSON Editor',
-      description:
-        'The ultimate developer tool for visualizing, editing, and analyzing JSON data entirely in your browser. Fast, secure, and professional.',
-      shortDescription:
-        'Visualize, edit, and analyze JSON in your browser—fast, secure, and professional.',
-      url: 'https://jso-n.vercel.app/',
-    },
-  })
-  useSeoMeta({ titleTemplate: null })
+  // useSeo({
+  //   meta: {
+  //     title: 'JSONotations - Advanced Frontend JSON Editor',
+  //     description:
+  //       'The ultimate developer tool for visualizing, editing, and analyzing JSON data entirely in your browser. Fast, secure, and professional.',
+  //     shortDescription:
+  //       'Visualize, edit, and analyze JSON in your browser—fast, secure, and professional.',
+  //     url: 'https://jso-n.vercel.app/',
+  //   },
+  // })
+  // useSeoMeta({ titleTemplate:null })
 
   const features = [
     {
       title: 'Interactive Tree View',
       description: 'Navigate complex JSON structures with a collapsible, searchable tree view.',
-      icon: IHugeiconsStructure03,
+      icon: 'hugeicons:structure-03',
       color: 'text-blue-400',
     },
     {
       title: 'Spreadsheet View',
       description:
         'Convert arrays of objects into a clean, sortable table view for better analysis.',
-      icon: ILucideTable,
+      icon: 'lucide:table',
       color: 'text-emerald-400',
     },
     {
       title: 'JSON Diff',
       description: 'Compare two JSON sets side by side with highlighted changes.',
-      icon: ILucideGitCompare,
+      icon: 'lucide:git-compare',
       color: 'text-purple-400',
     },
     {
       title: 'Schema Inference',
       description: 'Automatically generate and preview schema types from your data.',
-      icon: ILucideCode2,
+      icon: 'lucide:code2',
       color: 'text-orange-400',
     },
     {
       title: 'Advanced Search',
       description: 'Powerful search with operators and exact phrase matching.',
-      icon: IHugeiconsSearch01,
+      icon: 'hugeicons:search-01',
       color: 'text-cyan-400',
     },
     {
       title: 'Secure & Private',
       description: '100% client-side processing. Your data never leaves your browser.',
-      icon: IHugeiconsShield01,
+      icon: 'hugeicons-shield-01',
       color: 'text-indigo-400',
     },
   ]
@@ -103,7 +107,7 @@ const LandingPage = () => {
             className="z-10"
           >
             <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1.5 text-[11px] font-bold tracking-widest text-primary uppercase shadow-inner">
-              <IHugeiconsSparkles className="size-3.5" />
+              <Icon icon="hugeicons:sparkles" className="size-3.5" />
               Next-Gen JSON Workspace
             </div>
             <h1 className="mb-8 bg-linear-to-b from-foreground via-foreground to-foreground/60 bg-clip-text title leading-[1.05] text-transparent">
@@ -115,13 +119,13 @@ const LandingPage = () => {
               demand better JSON visualization and manipulation.
             </p>
             <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
-              <Link to="/editor">
+              <Link href="/editor">
                 <Button
                   size="lg"
                   className="h-12 button-hover-scale px-8 text-lg shadow-xl shadow-primary/20"
                 >
                   Start Building
-                  <IHugeiconsArrowRight02 className="ml-2.5 size-6" />
+                  <Icon icon="hugeicons:arrow-right-02" className="ml-2.5 size-6" />
                 </Button>
               </Link>
               <a href="#features">
@@ -157,8 +161,11 @@ const LandingPage = () => {
                   </div>
                 </div>
                 <div className="relative size-full">
-                  <img
-                    src="https://miaoda-site-img.s3cdn.medo.dev/images/KLing_beb1effb-04b1-4251-b6de-c0b3ea5f1087.jpg"
+                  <Image
+                    src="/image.jpg"
+                    loading="lazy"
+                    width={350}
+                    height={200}
                     alt="JSONotations Interface Preview"
                     className="size-full object-cover opacity-90 grayscale-[0.2] transition-all duration-700 group-hover:grayscale-0"
                   />
@@ -171,7 +178,7 @@ const LandingPage = () => {
                     className="absolute top-[20%] right-[10%] z-20 flex items-center gap-4 rounded-2xl border-white/5 p-4 shadow-2xl glass-card backdrop-blur-2xl"
                   >
                     <div className="flex size-10 items-center justify-center rounded-xl border border-primary/30 shadow-lg shadow-primary/20 primary-gradient">
-                      <IHugeiconsLayers01 className="size-5 text-white" />
+                      <Icon icon="hugeicons:layers-01" className="size-5 text-white" />
                     </div>
                     <div className="text-left">
                       <div className="text-[13px] font-bold">Deep Nesting</div>
@@ -186,8 +193,8 @@ const LandingPage = () => {
                     transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                     className="absolute bottom-[25%] left-[8%] z-20 flex items-center gap-4 rounded-2xl border-white/5 p-4 shadow-2xl glass-card backdrop-blur-2xl"
                   >
-                    <div className="flex size-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-emerald-500 shadow-lg shadow-emerald-500/20">
-                      <ILucideActivity className="size-5 text-white" />
+                    <div className="flex size-10 items-center justify-center rounded-xl border border-success/20 bg-success shadow-lg shadow-emerald-500/20">
+                      <Icon icon="lucide:activity" className="size-5 text-white" />
                     </div>
                     <div className="text-left">
                       <div className="text-[13px] font-bold">Real-time Diff</div>
@@ -252,7 +259,7 @@ const LandingPage = () => {
                 >
                   <div className="absolute -top-12 -right-12 size-32 rounded-full bg-primary/5 blur-3xl transition-colors group-hover:bg-primary/40" />
                   <div className="mb-8 flex size-14 items-center justify-center rounded-2xl border border-border/50 bg-secondary/50 shadow-inner transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
-                    <feature.icon className={`size-7 ${feature.color}`} />
+                    <Icon icon={feature.icon} className={`size-7 ${feature.color}`} />
                   </div>
                   <h3 className="mb-4 text-xl font-semibold transition-colors group-hover:text-primary">
                     {feature.title}
@@ -262,7 +269,7 @@ const LandingPage = () => {
                   </p>
 
                   <div className="mt-8 flex translate-x-[-10px] items-center text-xs font-bold text-primary/0 transition-all group-hover:translate-x-0 group-hover:text-primary">
-                    Learn more <IHugeiconsArrowRight02 className="ml-1.5 size-3.5" />
+                    Learn more <Icon icon="hugeicons:arrow-right-02" className="ml-1.5 size-3.5" />
                   </div>
                 </motion.div>
               ))}
@@ -291,7 +298,7 @@ const LandingPage = () => {
               Join thousands of developers using JSONotations to visualize, edit and validate data
               with confidence.
             </p>
-            <Link to="/editor">
+            <Link href="/editor">
               <Button
                 size="lg"
                 className="h-16 button-hover-scale border-none px-14 text-xl font-black shadow-2xl shadow-primary/30 primary-gradient"

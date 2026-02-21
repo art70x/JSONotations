@@ -1,31 +1,36 @@
-import { Sidebar, type SidebarTab } from 'components/sidebar'
-import { JSONEditor } from 'components/json-editor'
-import { JSONTreeView } from 'components/json-tree-view'
-import { JSONTableView } from 'components/json-table-view'
+'use client'
+
+import { cn } from '@/lib/utils'
+import { Icon } from '@iconify/react'
 import { JSONDiffView } from 'components/json-diff-view'
+import { JSONEditor } from 'components/json-editor'
 import { JSONSchemaPreview } from 'components/json-schema-preview'
-import { useJSONEditor } from '@/hooks/use-json-editor'
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from 'components/ui/resizable'
+import { JSONTableView } from 'components/json-table-view'
+import { JSONTreeView } from 'components/json-tree-view'
+import { Sidebar, type SidebarTab } from 'components/sidebar'
 import { Button } from 'components/ui/button'
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from 'components/ui/resizable'
+import { Skeleton } from 'components/ui/skeleton'
+import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useJSONEditor } from 'hooks/use-json-editor'
 import {
-  Download,
-  FileUp,
-  Trash2,
+  AlertCircle,
   AlignLeft,
-  Maximize2,
-  RefreshCcw,
-  Search,
   ArrowDownToLine,
   CheckCircle2,
-  AlertCircle,
+  Download,
   Edit3,
+  FileUp,
+  Maximize2,
   Network,
+  RefreshCcw,
+  Search,
+  Trash2,
 } from 'lucide-react'
-import { toast } from 'sonner'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from 'components/ui/tooltip'
-import { Skeleton } from 'components/ui/skeleton'
+import { toast } from 'sonner'
 
 function useDebouncedValue<T>(value: T, delay: number) {
   const [debounced, setDebounced] = useState(value)
@@ -39,15 +44,15 @@ function useDebouncedValue<T>(value: T, delay: number) {
 }
 
 export default function EditorPage() {
-  useSeo({
-    meta: {
-      title: 'Editor',
-      description:
-        'Powerful client-side JSON editor featuring real-time tree view, table view, and diff comparison for effortless editing and analysis.',
-      shortDescription: 'Client-side JSON editor with tree, table, and diff views.',
-      url: 'https://jso-n.vercel.app/editor',
-    },
-  })
+  // useSeo({
+  //   meta: {
+  //     title: 'Editor',
+  //     description:
+  //       'Powerful client-side JSON editor featuring real-time tree view, table view, and diff comparison for effortless editing and analysis.',
+  //     shortDescription: 'Client-side JSON editor with tree, table, and diff views.',
+  //     url: 'https://jso-n.vercel.app/editor',
+  //   },
+  // })
 
   const [activeTab, setActiveTab] = useState<SidebarTab>('editor')
   const [searchQuery, setSearchQuery] = useState('')
@@ -243,226 +248,224 @@ export default function EditorPage() {
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="relative z-10 flex min-w-0 flex-1 flex-col bg-background shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-        <TooltipProvider delayDuration={400}>
-          {/* Toolbar */}
-          <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b border-border bg-background/80 px-6 shadow-sm backdrop-blur-xl">
-            <div className="flex items-center gap-4">
-              <div className="hidden h-4 w-px bg-border/50 xl:block" />
-              <div className="flex items-center gap-1.5">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className={cn(
-                        'size-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
-                        isFormatting && 'bg-primary/10 text-primary',
-                      )}
-                      onClick={handleFormat}
-                      aria-label="Format JSON (Shift+Alt+F)"
-                    >
-                      {isFormatting ? (
-                        <RefreshCcw className="h-4.5 w-4.5 animate-spin" />
-                      ) : (
-                        <AlignLeft className="h-4.5 w-4.5" />
-                      )}
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="text-[10px] font-bold tracking-wider uppercase"
+        {/* Toolbar */}
+        <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b border-border bg-background/80 px-6 shadow-sm backdrop-blur-xl">
+          <div className="flex items-center gap-4">
+            <div className="hidden h-4 w-px bg-border/50 xl:block" />
+            <div className="flex items-center gap-1.5">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className={cn(
+                      'size-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
+                      isFormatting && 'bg-primary/10 text-primary',
+                    )}
+                    onClick={handleFormat}
+                    aria-label="Format JSON (Shift+Alt+F)"
                   >
-                    Format JSON (Shift+Alt+F)
-                  </TooltipContent>
-                </Tooltip>
+                    {isFormatting ? (
+                      <RefreshCcw className="h-4.5 w-4.5 animate-spin" />
+                    ) : (
+                      <AlignLeft className="h-4.5 w-4.5" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="bottom"
+                  className="text-[10px] font-bold tracking-wider uppercase"
+                >
+                  Format JSON (Shift+Alt+F)
+                </TooltipContent>
+              </Tooltip>
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="size-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
-                      onClick={minifyJSON}
-                      aria-label="Minify JSON"
-                    >
-                      <Maximize2 className="h-4.5 w-4.5" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="text-[10px] font-bold tracking-wider uppercase"
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="size-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
+                    onClick={minifyJSON}
+                    aria-label="Minify JSON"
                   >
-                    Minify JSON
-                  </TooltipContent>
-                </Tooltip>
+                    <Maximize2 className="h-4.5 w-4.5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="bottom"
+                  className="text-[10px] font-bold tracking-wider uppercase"
+                >
+                  Minify JSON
+                </TooltipContent>
+              </Tooltip>
 
-                <div className="mx-1 h-4 w-px bg-border/50" />
+              <div className="mx-1 h-4 w-px bg-border/50" />
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className={cn(
-                        'size-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
-                        isCopying && 'bg-emerald-400/10 text-emerald-400',
-                      )}
-                      onClick={handleCopy}
-                      aria-label="Copy JSON to clipboard"
-                    >
-                      {isCopying ? (
-                        <IHugeiconsTick02 className="h-4.5 w-4.5" />
-                      ) : (
-                        <IHugeiconsCopy01 className="h-4.5 w-4.5" />
-                      )}
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="text-[10px] font-bold tracking-wider uppercase"
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className={cn(
+                      'size-9 button-hover-scale rounded-xl text-muted-foreground transition-all duration-300',
+                      isCopying && 'bg-emerald-400/10 text-emerald-400',
+                    )}
+                    onClick={handleCopy}
+                    aria-label="Copy JSON to clipboard"
                   >
-                    {isCopying ? 'Copied!' : 'Copy All'}
-                  </TooltipContent>
-                </Tooltip>
+                    {isCopying ? (
+                      <Icon icon="hugeicons:tick-02" className="h-4.5 w-4.5" />
+                    ) : (
+                      <Icon icon="hugeicons:copy-01" className="h-4.5 w-4.5" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="bottom"
+                  className="text-[10px] font-bold tracking-wider uppercase"
+                >
+                  {isCopying ? 'Copied!' : 'Copy All'}
+                </TooltipContent>
+              </Tooltip>
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="size-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
-                      onClick={handleDownload}
-                      aria-label="Download as .json file"
-                    >
-                      <Download className="h-4.5 w-4.5" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="text-[10px] font-bold tracking-wider uppercase"
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="size-9 button-hover-scale rounded-xl text-muted-foreground transition-all hover:text-primary"
+                    onClick={handleDownload}
+                    aria-label="Download as .json file"
                   >
-                    Download .json (Ctrl+S)
-                  </TooltipContent>
-                </Tooltip>
+                    <Download className="h-4.5 w-4.5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="bottom"
+                  className="text-[10px] font-bold tracking-wider uppercase"
+                >
+                  Download .json (Ctrl+S)
+                </TooltipContent>
+              </Tooltip>
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <label
-                      className="button-hover-scale cursor-pointer"
-                      aria-label="Upload JSON file"
-                    >
-                      <div className="flex size-9 items-center justify-center rounded-xl text-muted-foreground transition-all hover:bg-secondary/50 hover:text-primary">
-                        <FileUp className="h-4.5 w-4.5" />
-                      </div>
-                      <input
-                        type="file"
-                        accept=".json"
-                        className="hidden"
-                        onChange={handleFileUpload}
-                      />
-                    </label>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="text-[10px] font-bold tracking-wider uppercase"
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <label
+                    className="button-hover-scale cursor-pointer"
+                    aria-label="Upload JSON file"
                   >
-                    Upload File
-                  </TooltipContent>
-                </Tooltip>
+                    <div className="flex size-9 items-center justify-center rounded-xl text-muted-foreground transition-all hover:bg-secondary/50 hover:text-primary">
+                      <FileUp className="h-4.5 w-4.5" />
+                    </div>
+                    <input
+                      type="file"
+                      accept=".json"
+                      className="hidden"
+                      onChange={handleFileUpload}
+                    />
+                  </label>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="bottom"
+                  className="text-[10px] font-bold tracking-wider uppercase"
+                >
+                  Upload File
+                </TooltipContent>
+              </Tooltip>
 
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="size-9 button-hover-scale rounded-xl text-destructive/70 transition-all hover:bg-destructive/10 hover:text-destructive"
-                      onClick={clearContent}
-                      aria-label="Clear all content"
-                    >
-                      <Trash2 className="h-4.5 w-4.5" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="bottom"
-                    className="text-[10px] font-bold tracking-wider uppercase"
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="size-9 button-hover-scale rounded-xl text-destructive/70 transition-all hover:bg-destructive/10 hover:text-destructive"
+                    onClick={clearContent}
+                    aria-label="Clear all content"
                   >
-                    Clear All
-                  </TooltipContent>
-                </Tooltip>
-              </div>
+                    <Trash2 className="h-4.5 w-4.5" />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="bottom"
+                  className="text-[10px] font-bold tracking-wider uppercase"
+                >
+                  Clear All
+                </TooltipContent>
+              </Tooltip>
             </div>
+          </div>
 
-            <div className="flex items-center gap-4">
-              <div className="group relative hidden items-center xl:flex">
-                <Search className="absolute left-3.5 size-3.5 text-muted-foreground transition-colors group-focus-within:text-primary" />
-                <input
-                  type="text"
-                  placeholder="Search JSON..."
-                  value={searchQuery}
-                  onChange={(event) => setSearchQuery(event.target.value)}
-                  className="w-48 rounded-xl border border-border/50 bg-secondary/30 px-9 py-2 text-xs font-medium shadow-inner transition-all focus:w-80 focus:ring-2 focus:ring-primary/20 focus:outline-none"
-                  aria-label="Search through JSON data using AND, OR, and quotes"
-                />
+          <div className="flex items-center gap-4">
+            <div className="group relative hidden items-center xl:flex">
+              <Search className="absolute left-3.5 size-3.5 text-muted-foreground transition-colors group-focus-within:text-primary" />
+              <input
+                type="text"
+                placeholder="Search JSON..."
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                className="w-48 rounded-xl border border-border/50 bg-secondary/30 px-9 py-2 text-xs font-medium shadow-inner transition-all focus:w-80 focus:ring-2 focus:ring-primary/20 focus:outline-none"
+                aria-label="Search through JSON data using AND, OR, and quotes"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-2.5 text-muted-foreground transition-colors hover:text-foreground"
+                  aria-label="Clear search"
+                >
+                  <Trash2 className="size-3" />
+                </button>
+              )}
+              <AnimatePresence>
                 {searchQuery && (
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 text-muted-foreground transition-colors hover:text-foreground"
-                    aria-label="Clear search"
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute inset-x-0 top-full z-50 mt-2 max-h-96 space-y-1 overflow-hidden overflow-y-auto rounded-xl border border-border bg-popover p-2 shadow-xl"
                   >
-                    <Trash2 className="size-3" />
-                  </button>
-                )}
-                <AnimatePresence>
-                  {searchQuery && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="absolute inset-x-0 top-full z-50 mt-2 max-h-96 space-y-1 overflow-hidden overflow-y-auto rounded-xl border border-border bg-popover p-2 shadow-xl"
-                    >
-                      <div className="mb-1 border-b border-border px-2 py-1.5 text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                        Results ({searchResults.length})
+                    <div className="mb-1 border-b border-border px-2 py-1.5 text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                      Results ({searchResults.length})
+                    </div>
+                    {searchResults.length > 0 ? (
+                      searchResults.map((result, index) => (
+                        <button
+                          key={index}
+                          className="group/item flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left transition-colors hover:bg-secondary"
+                        >
+                          <div className="flex min-w-0 flex-col">
+                            <span className="truncate font-mono text-[10px] text-primary/70">
+                              {result.path}
+                            </span>
+                            <span className="truncate text-xs text-foreground/80">
+                              {typeof result.value === 'object' ? '{...}' : String(result.value)}
+                            </span>
+                          </div>
+                          <ArrowDownToLine className="size-3 shrink-0 text-muted-foreground group-hover/item:text-primary" />
+                        </button>
+                      ))
+                    ) : (
+                      <div className="p-4 text-center text-xs text-muted-foreground italic">
+                        No matches found
                       </div>
-                      {searchResults.length > 0 ? (
-                        searchResults.map((result, index) => (
-                          <button
-                            key={index}
-                            className="group/item flex w-full items-center justify-between gap-3 rounded-md px-3 py-2 text-left transition-colors hover:bg-secondary"
-                          >
-                            <div className="flex min-w-0 flex-col">
-                              <span className="truncate font-mono text-[10px] text-primary/70">
-                                {result.path}
-                              </span>
-                              <span className="truncate text-xs text-foreground/80">
-                                {typeof result.value === 'object' ? '{...}' : String(result.value)}
-                              </span>
-                            </div>
-                            <ArrowDownToLine className="size-3 shrink-0 text-muted-foreground group-hover/item:text-primary" />
-                          </button>
-                        ))
-                      ) : (
-                        <div className="p-4 text-center text-xs text-muted-foreground italic">
-                          No matches found
-                        </div>
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-              <div className="h-4 w-px bg-border" />
-              <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-secondary/20 px-2 py-1 transition-colors">
-                {error ? (
-                  <AlertCircle className="size-3.5 text-destructive" />
-                ) : (
-                  <CheckCircle2 className="size-3.5 text-success" />
+                    )}
+                  </motion.div>
                 )}
-                <span className="text-[10px] font-bold tracking-tighter uppercase">
-                  {error ? 'Invalid' : 'Valid'}
-                </span>
-              </div>
+              </AnimatePresence>
             </div>
-          </header>
-        </TooltipProvider>
+            <div className="h-4 w-px bg-border" />
+            <div className="flex items-center gap-2 rounded-lg border border-border/50 bg-secondary/20 px-2 py-1 transition-colors">
+              {error ? (
+                <AlertCircle className="size-3.5 text-destructive" />
+              ) : (
+                <CheckCircle2 className="size-3.5 text-success" />
+              )}
+              <span className="text-[10px] font-bold tracking-tighter uppercase">
+                {error ? 'Invalid' : 'Valid'}
+              </span>
+            </div>
+          </div>
+        </header>
 
         {/* Content Area */}
         <div className="min-h-0 flex-1">
@@ -507,7 +510,7 @@ export default function EditorPage() {
                             </div>
                             <Skeleton className="h-4 w-[220px] bg-muted" />
                           </div>
-                        ) : (parsedData ? (
+                        ) : parsedData ? (
                           <JSONTreeView data={parsedData} filter={searchQuery} />
                         ) : (
                           <div className="flex h-full flex-col items-center justify-center space-y-4 font-mono text-sm text-muted-foreground opacity-50">
@@ -520,7 +523,7 @@ export default function EditorPage() {
                                 : 'Waiting for valid JSON input...'}
                             </p>
                           </div>
-                        ))}
+                        )}
                       </div>
                     </div>
                   </ResizablePanel>

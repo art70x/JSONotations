@@ -19,7 +19,7 @@ interface UseSeoOptions {
 }
 
 export function useSeo({ meta, icons, robots }: UseSeoOptions) {
-  useSeoMeta({
+  const useSeoMeta = {
     title: meta?.title,
     description: meta?.description,
 
@@ -49,9 +49,9 @@ export function useSeo({ meta, icons, robots }: UseSeoOptions) {
     creator: meta?.author,
     robots,
     themeColor: '#00a4e8',
-  })
+  }
 
-  useHead({
+  const useHead = {
     htmlAttrs: {
       lang: 'en',
     },
@@ -72,5 +72,7 @@ export function useSeo({ meta, icons, robots }: UseSeoOptions) {
           ]
         : []),
     ],
-  })
+  }
+
+  return { useSeoMeta, useHead }
 }

@@ -1,13 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Icon } from '@iconify/react'
+import Link from 'next/link'
 
 export const Footer = () => {
   return (
     <footer className="relative border-t border-border/40 px-6 py-20">
       <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-4">
         <div className="col-span-2 space-y-6">
-          <Link to="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5">
             <div className="flex size-9 items-center justify-center rounded-lg border border-primary/30 shadow-lg shadow-primary/20 primary-gradient">
-              <IHugeiconsCode className="size-4 text-foreground" />
+              <Icon icon="hugeicons:code" className="size-4 text-foreground" />
             </div>
             <span className="text-xl font-black tracking-tight">JSONotations</span>
           </Link>
@@ -22,7 +23,7 @@ export const Footer = () => {
           </h4>
           <ul className="space-y-4 text-sm font-bold text-muted-foreground">
             <li>
-              <Link to="/editor" className="transition-colors hover:text-primary">
+              <Link href="/editor" className="transition-colors hover:text-primary">
                 Editor
               </Link>
             </li>
@@ -32,7 +33,7 @@ export const Footer = () => {
               </a>
             </li>
             <li>
-              <Link to="/faq" className="transition-colors hover:text-primary">
+              <Link href="/faq" className="transition-colors hover:text-primary">
                 FAQ
               </Link>
             </li>
@@ -44,12 +45,12 @@ export const Footer = () => {
           </h4>
           <ul className="space-y-4 text-sm font-bold text-muted-foreground">
             <li>
-              <Link to="/help" className="transition-colors hover:text-primary">
+              <Link href="/help" className="transition-colors hover:text-primary">
                 Documentation
               </Link>
             </li>
             <li>
-              <Link to="/settings" className="transition-colors hover:text-primary">
+              <Link href="/settings" className="transition-colors hover:text-primary">
                 Settings
               </Link>
             </li>
@@ -61,9 +62,11 @@ export const Footer = () => {
           </ul>
         </div>
       </div>
-      <p className="mx-auto my-8 flex max-w-7xl items-center justify-center border-t border-border/20 pt-12 text-sm font-bold tracking-widest text-muted-foreground uppercase">
-        <p>© 2026 JSONotations. All rights reserved.</p>
-      </p>
+      <div className="mx-auto my-8 flex max-w-7xl items-center justify-center border-t border-border/20 pt-12">
+        <p className="text-sm font-bold tracking-widest text-muted-foreground uppercase">
+          &copy; 2026 JSONotations. All rights reserved.
+        </p>
+      </div>
     </footer>
   )
 }

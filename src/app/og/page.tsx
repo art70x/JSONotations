@@ -1,8 +1,12 @@
+'use client'
+
+import { Icon } from '@iconify/react'
+
 export default function OgImage() {
-  useSeo({
-    meta: { title: 'OpenGraph Image' },
-    robots: 'noindex, nofollow',
-  })
+  // useSeo({
+  //   meta: { title: 'OpenGraph Image' },
+  //   robots: 'noindex, nofollow',
+  // })
 
   return (
     <div className="grid min-h-dvh place-items-center bg-background">
@@ -12,7 +16,7 @@ export default function OgImage() {
       >
         {/* Logo */}
         <div className="flex items-center justify-center rounded-4xl p-4 shadow-xl shadow-primary/30 primary-gradient">
-          <IHugeiconsCode className="size-24 text-foreground" />
+          <Icon icon="hugeicons:code" className="size-24 text-foreground" />
         </div>
 
         {/* Title */}

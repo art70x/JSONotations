@@ -1,22 +1,25 @@
+'use client'
+
+import { Icon } from '@iconify/react'
 import { Sidebar } from 'components/sidebar'
-import { motion } from 'framer-motion'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from 'components/ui/accordion'
+import { motion } from 'framer-motion'
 
 export default function FAQPage() {
-  useSeo({
-    meta: {
-      title: 'FAQs',
-      description:
-        'Comprehensive answers to common questions about our JSON Editor, Tree View, Table View, and other features.',
-      shortDescription: 'FAQs for our JSON Editor, Tree View, and Table View.',
-      url: 'https://jso-n.vercel.app/faq',
-    },
-  })
+  // useSeo({
+  //   meta: {
+  //     title: 'FAQs',
+  //     description:
+  //       'Comprehensive answers to common questions about our JSON Editor, Tree View, Table View, and other features.',
+  //     shortDescription: 'FAQs for our JSON Editor, Tree View, and Table View.',
+  //     url: 'https://jso-n.vercel.app/faq',
+  //   },
+  // })
 
   const faqs = [
     {
@@ -115,7 +118,7 @@ export default function FAQPage() {
         <div className="relative z-10 mx-auto w-full max-w-4xl space-y-16 p-8 py-24">
           <header className="space-y-6 text-center">
             <div className="flex size-8 items-center justify-center rounded-lg shadow-lg shadow-primary/30 transition-transform primary-gradient group-hover:scale-105">
-              <IHugeiconsMessageQuestion className="size-8 text-foreground" />
+              <Icon icon="hugeicons:message-question" className="size-8 text-foreground" />
             </div>
             <h1 className="bg-linear-to-b from-foreground to-foreground/50 bg-clip-text text-5xl font-black tracking-tighter text-transparent md:text-7xl">
               Help & <br />
@@ -156,15 +159,6 @@ export default function FAQPage() {
                 </Accordion>
               </motion.section>
             ))}
-          </div>
-
-          <div className="mt-16 border-t border-border pt-16 text-center">
-            <p className="text-muted-foreground">
-              Still have questions?{' '}
-              <a href="#" className="font-medium text-primary hover:underline">
-                Contact our support team
-              </a>
-            </p>
           </div>
         </div>
       </main>

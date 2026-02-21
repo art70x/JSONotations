@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import { Icon } from '@iconify/react'
 import { Button } from 'components/ui/button'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export default function NotFound() {
-  useSeoMeta({
-    title: '404 - Page Not Found',
-    description: 'The page you are looking for does not exist.',
-    titleTemplate: null,
-  })
+  // useSeoMeta({
+  //   title: '404 - Page Not Found',
+  //   description: 'The page you are looking for does not exist.',
+  //   titleTemplate: null,
+  // })
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background p-6 text-foreground">
       {/* Background Glow */}
@@ -20,7 +23,7 @@ export default function NotFound() {
         className="z-10 text-center"
       >
         <div className="mx-auto mb-8 flex size-24 animate-float items-center justify-center rounded-[2rem] border border-primary/20 bg-primary/10 shadow-2xl">
-          <ILucideGhost className="size-12 text-primary" />
+          <Icon icon="lucide:ghost" className="size-12 text-primary" />
         </div>
 
         <h1 className="mb-4 bg-linear-to-b from-foreground to-foreground/50 bg-clip-text text-8xl font-black tracking-tighter text-transparent">
@@ -32,12 +35,12 @@ export default function NotFound() {
           schema.
         </p>
 
-        <Link to="/">
+        <Link href="/">
           <Button
             size="lg"
             className="h-12 button-hover-scale px-8 font-bold shadow-xl shadow-primary/20"
           >
-            <IHugeiconsArrowLeft02 className="mr-2 size-4" />
+            <Icon icon="hugeicons:arrow-left-02" className="mr-2 size-4" />
             Back to Safety
           </Button>
         </Link>

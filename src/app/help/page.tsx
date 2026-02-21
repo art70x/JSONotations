@@ -1,34 +1,37 @@
+'use client'
+
+import { Icon } from '@iconify/react'
 import { Sidebar } from 'components/sidebar'
-import { motion } from 'framer-motion'
 import { Card, CardContent } from 'components/ui/card'
+import { motion } from 'framer-motion'
 
 export default function HelpPage() {
-  useSeo({
-    meta: {
-      title: 'Documentation',
-      description:
-        'Master JSONotations with our complete user guide, covering all features and best practices.',
-      shortDescription: 'Complete guide to using JSONotations effectively.',
-      url: 'https://jso-n.vercel.app/help',
-    },
-  })
+  // useSeo({
+  //   meta: {
+  //     title: 'Documentation',
+  //     description:
+  //       'Master JSONotations with our complete user guide, covering all features and best practices.',
+  //     shortDescription: 'Complete guide to using JSONotations effectively.',
+  //     url: 'https://jso-n.vercel.app/help',
+  //   },
+  // })
 
   const guides = [
     {
       title: 'Getting Started',
-      icon: IHugeiconsZap,
+      icon: 'hugeicons:zap',
       description: 'Learn the basics of using JSONotations to manage your data.',
       steps: ['Paste your JSON', 'Use Tree View to navigate', 'Format or Minify with one click'],
     },
     {
       title: 'Keyboard Shortcuts',
-      icon: ILucideCode2,
+      icon: 'lucide:code2',
       description: 'Master the editor with powerful keyboard combinations.',
       steps: ['Alt + 1-5: Switch Tabs', 'Shift + Alt + F: Format', 'Ctrl + S: Save/Download'],
     },
     {
       title: 'Advanced Features',
-      icon: IHugeiconsBookOpen01,
+      icon: 'hugeicons:book-open-01',
       description: 'Dive deeper into schema validation and diff comparison.',
       steps: ['Compare two JSON sets', 'Infer and preview schema', 'Export table to CSV/PDF'],
     },
@@ -43,7 +46,7 @@ export default function HelpPage() {
         <div className="relative z-10 mx-auto w-full max-w-4xl space-y-16 p-8 py-24">
           <header className="space-y-6 text-center">
             <div className="flex size-8 items-center justify-center rounded-lg shadow-lg shadow-primary/30 transition-transform primary-gradient group-hover:scale-105">
-              <IHugeiconsHelpCircle className="size-8 text-foreground" />
+              <Icon icon="hugeicons:help-circle" className="size-8 text-foreground" />
             </div>
             <h1 className="bg-linear-to-b from-foreground to-foreground/50 bg-clip-text text-5xl font-black tracking-tighter text-transparent md:text-7xl">
               User Guide.
@@ -65,7 +68,7 @@ export default function HelpPage() {
                   <CardContent className="p-6">
                     <div className="flex flex-col gap-6 xl:flex-row">
                       <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                        <guide.icon className="size-6 text-primary" />
+                        <Icon icon={guide.icon} className="size-6 text-primary" />
                       </div>
                       <div className="space-y-4">
                         <div className="space-y-1">
