@@ -77,7 +77,8 @@
   },
   "pnpm": {
     "overrides": {
-      "vite": "npm:rolldown-vite@latest"
+      "vite": "npm:rolldown-vite@latest",
+      "minimatch": "^10.2.2"
     }
   },
   "packageManager": "pnpm@10.30.0"
