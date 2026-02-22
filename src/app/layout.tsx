@@ -5,7 +5,6 @@ import { ThemeProvider } from 'components/theme-provider'
 import { TooltipProvider } from 'components/ui/tooltip'
 import { Toaster } from 'sonner'
 
-import type { Metadata } from 'next'
 import { Fira_Mono, Geist_Mono, IBM_Plex_Mono, JetBrains_Mono, Roboto } from 'next/font/google'
 
 const roboto = Roboto({
@@ -53,38 +52,46 @@ const firaMono = Fira_Mono({
   variable: '--font-fira-mono',
 })
 
-export const metadata: Metadata = {
-  creator: 'art70x',
-  authors: { name: 'art70x', url: 'github.com/art70x' },
-  robots: {
-    index: true,
-    follow: true,
-    'max-image-preview': 'large',
-    'max-snippet': -1,
-    'max-video-preview': -1,
-  },
-  applicationName: 'JSONotations',
-  openGraph: {
-    images: {
-      height: 630,
-      width: 1200,
-      url: 'https://jso-n.vercel.app/og.png',
-      alt: 'JSONotations: Advanced Frontend JSON Editor',
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'JSONotations',
+      url: 'https://jso-n.vercel.app/',
+      description:
+        'The ultimate developer tool for visualizing, editing, and analyzing JSON data entirely in your browser. Fast, secure, and professional.',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires a modern web browser with JavaScript enabled.',
+      inLanguage: 'en',
+      image: 'https://jso-n.vercel.app/og.png',
+      creator: {
+        '@type': 'Person',
+        name: 'art70x',
+        url: 'https://github.com/art70x',
+      },
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
     },
-    type: 'website',
-    siteName: 'JSONotations',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    images: {
-      height: 630,
-      width: 1200,
-      url: 'https://jso-n.vercel.app/og.png',
-      alt: 'JSONotations: Advanced Frontend JSON Editor',
+    {
+      '@type': 'Organization',
+      name: 'JSONotations',
+      url: 'https://jso-n.vercel.app/',
+      logo: '/logo.svg',
+      sameAs: ['https://github.com/art70x', 'https://twitter.com/art70x'],
     },
-    creator: '@art70x',
-  },
+    {
+      '@type': 'Person',
+      name: 'art70x',
+      url: 'https://github.com/art70x',
+      sameAs: ['https://github.com/art70x', 'https://twitter.com/art70x'],
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -98,6 +105,16 @@ export default function RootLayout({
       className={`${roboto.variable} ${geistMono.variable} ${plexMono.variable} ${jetbrainsMono.variable} ${firaMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#00a4e8" />
+      </head>
       <body>
         <IntersectObserver />
         <ThemeProvider
