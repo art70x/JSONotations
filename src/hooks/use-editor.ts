@@ -1,7 +1,9 @@
 import type { Extension } from '@codemirror/state'
-import { vscodeLight, vscodeDark } from '@uiw/codemirror-theme-vscode'
-import { githubLight, githubDark } from '@uiw/codemirror-theme-github'
-import { xcodeLight, xcodeDark } from '@uiw/codemirror-theme-xcode'
+import { githubDark, githubLight } from '@uiw/codemirror-theme-github'
+import { vscodeDark, vscodeLight } from '@uiw/codemirror-theme-vscode'
+import { xcodeDark, xcodeLight } from '@uiw/codemirror-theme-xcode'
+import { useTheme } from 'next-themes'
+import { useEffect, useMemo, useState } from 'react'
 
 /* =========================
    THEME TYPES

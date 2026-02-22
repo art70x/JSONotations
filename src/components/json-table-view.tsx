@@ -1,14 +1,14 @@
-import { useMemo, useState } from 'react'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'components/ui/table'
 import { Alert, AlertDescription, AlertTitle } from 'components/ui/alert'
 import { Button } from 'components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from 'components/ui/popover'
 import { Label } from 'components/ui/label'
-import { Switch } from 'components/ui/switch'
+import { Popover, PopoverContent, PopoverTrigger } from 'components/ui/popover'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'components/ui/select'
-import { toast } from 'sonner'
+import { Switch } from 'components/ui/switch'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'components/ui/table'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
+import { useMemo, useState } from 'react'
+import { toast } from 'sonner'
 
 /* TYPES */
 

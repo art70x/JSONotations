@@ -12,11 +12,12 @@ export default {
     'prettier-plugin-organize-attributes',
     'prettier-plugin-css-order',
     'prettier-plugin-tailwindcss',
+    'prettier-plugin-organize-imports',
   ],
   attributeGroups: ['^className$', '$DEFAULT', '^title$', '^aria-', '^data-'],
   cssDeclarationSorterOrder: 'frakto',
   cssDeclarationSorterKeepOverrides: false,
-  tailwindStylesheet: './src/main.css',
+  tailwindStylesheet: './src/app/globals.css',
   tailwindPreserveWhitespace: true,
   tailwindPreserveDuplicates: true,
 }

@@ -1,8 +1,8 @@
 {
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
-    "vite.config.ts": "prettier*, eslint*, .editorconfig",
-    "tsconfig.json": "tsconfig.*.json",
+    "next.config.ts": "prettier*, eslint*, postcss*, .editorconfig",
+    "tsconfig.json": "*.d.ts",
     "package.json": "pnpm*"
   },
   "editor.codeActionsOnSave": {

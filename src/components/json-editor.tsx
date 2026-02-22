@@ -1,9 +1,10 @@
 'use client'
 
-import { useMemo } from 'react'
-import CodeMirror from '@uiw/react-codemirror'
+import { useEditor } from '@/hooks/use-editor'
 import { json } from '@codemirror/lang-json'
 import { EditorView } from '@codemirror/view'
+import CodeMirror from '@uiw/react-codemirror'
+import { useMemo } from 'react'
 
 interface JSONEditorProperties {
   value: string
