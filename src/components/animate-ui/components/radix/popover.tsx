@@ -1,31 +1,29 @@
-import * as React from 'react';
-
 import {
-  Popover as PopoverPrimitive,
-  PopoverTrigger as PopoverTriggerPrimitive,
+  PopoverClose as PopoverClosePrimitive,
   PopoverContent as PopoverContentPrimitive,
   PopoverPortal as PopoverPortalPrimitive,
-  PopoverClose as PopoverClosePrimitive,
+  Popover as PopoverPrimitive,
+  PopoverTrigger as PopoverTriggerPrimitive,
+  type PopoverCloseProps as PopoverClosePrimitiveProps,
+  type PopoverContentProps as PopoverContentPrimitiveProps,
   type PopoverProps as PopoverPrimitiveProps,
   type PopoverTriggerProps as PopoverTriggerPrimitiveProps,
-  type PopoverContentProps as PopoverContentPrimitiveProps,
-  type PopoverCloseProps as PopoverClosePrimitiveProps,
-} from '@/components/animate-ui/primitives/radix/popover';
-import { cn } from '@/lib/utils';
+} from '@/components/animate-ui/primitives/radix/popover'
+import { cn } from '@/lib/utils'
 
-type PopoverProps = PopoverPrimitiveProps;
+type PopoverProps = PopoverPrimitiveProps
 
 function Popover(props: PopoverProps) {
-  return <PopoverPrimitive {...props} />;
+  return <PopoverPrimitive {...props} />
 }
 
-type PopoverTriggerProps = PopoverTriggerPrimitiveProps;
+type PopoverTriggerProps = PopoverTriggerPrimitiveProps
 
 function PopoverTrigger(props: PopoverTriggerProps) {
-  return <PopoverTriggerPrimitive {...props} />;
+  return <PopoverTriggerPrimitive {...props} />
 }
 
-type PopoverContentProps = PopoverContentPrimitiveProps;
+type PopoverContentProps = PopoverContentPrimitiveProps
 
 function PopoverContent({
   className,
@@ -45,22 +43,22 @@ function PopoverContent({
         {...props}
       />
     </PopoverPortalPrimitive>
-  );
+  )
 }
 
-type PopoverCloseProps = PopoverClosePrimitiveProps;
+type PopoverCloseProps = PopoverClosePrimitiveProps
 
 function PopoverClose(props: PopoverCloseProps) {
-  return <PopoverClosePrimitive {...props} />;
+  return <PopoverClosePrimitive {...props} />
 }
 
 export {
   Popover,
-  PopoverTrigger,
-  PopoverContent,
   PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+  type PopoverCloseProps,
+  type PopoverContentProps,
   type PopoverProps,
   type PopoverTriggerProps,
-  type PopoverContentProps,
-  type PopoverCloseProps,
-};
+}
