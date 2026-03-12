@@ -1,13 +1,13 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { Sidebar } from 'components/sidebar'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from 'components/ui/accordion'
+} from 'components/animate-ui/components/radix/accordion'
+import { Sidebar } from 'components/sidebar'
 import { motion } from 'framer-motion'
 
 export const FAQPageClient = () => {

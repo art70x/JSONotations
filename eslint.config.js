@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
       'unicorn/no-abusive-eslint-disable': 'off',
       'unicorn/no-array-reduce': 'off',
       'unicorn/no-null': 'off',
+      'unicorn/prevent-abbreviations': 'off',
+      'react-hooks/ref': 'warn'
     },
   },
   // Override default ignores of eslint-config-next.

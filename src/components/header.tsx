@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import { Button } from 'components/ui/button'
+import { Button } from 'components/animate-ui/components/buttons/button'
 import Link from 'next/link'
 
 export const Header = () => {

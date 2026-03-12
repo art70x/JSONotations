@@ -1,11 +1,11 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { Switch } from 'components/animate-ui/components/radix/switch'
 import { Sidebar } from 'components/sidebar'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from 'components/ui/card'
 import { Label } from 'components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'components/ui/select'
-import { Switch } from 'components/ui/switch'
 import { motion } from 'framer-motion'
 import type { EditorFontSize, EditorTheme, MonoFont } from 'hooks/use-editor'
 import { useEditor } from 'hooks/use-editor'

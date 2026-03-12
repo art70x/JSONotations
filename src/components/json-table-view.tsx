@@ -1,9 +1,13 @@
+import { Button } from 'components/animate-ui/components/buttons/button'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from 'components/animate-ui/components/radix/popover'
+import { Switch } from 'components/animate-ui/components/radix/switch'
 import { Alert, AlertDescription, AlertTitle } from 'components/ui/alert'
-import { Button } from 'components/ui/button'
 import { Label } from 'components/ui/label'
-import { Popover, PopoverContent, PopoverTrigger } from 'components/ui/popover'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from 'components/ui/select'
-import { Switch } from 'components/ui/switch'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from 'components/ui/table'
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'

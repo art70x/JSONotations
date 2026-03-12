@@ -1,7 +1,7 @@
 'use client'
 
 import { Icon } from '@iconify/react'
-import { Button } from 'components/ui/button'
+import { Button } from 'components/animate-ui/components/buttons/button'
 import { useEffect } from 'react'
 
 export default function Error({

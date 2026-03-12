@@ -1,9 +1,9 @@
 'use client'
 
 import { Icon } from '@iconify/react'
+import { Button } from 'components/animate-ui/components/buttons/button'
 import { Footer } from 'components/footer'
 import { Header } from 'components/header'
-import { Button } from 'components/ui/button'
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
