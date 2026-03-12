@@ -2,14 +2,6 @@
 
 JSONotations is a premium, client-side JSON workspace designed for developers who demand superior visualization, security, and usability. It replaces basic online editors with a powerful, intuitive environment that works entirely in your browser.
 
-## Theme
-
-To get theme, run:
-
-```sh
-pnpm dlx shadcn@latest create --preset "https://ui.shadcn.com/init?base=radix&style=nova&baseColor=neutral&theme=sky&iconLibrary=lucide&font=inter&menuAccent=subtle&menuColor=default&radius=default&template=vite&rtl=false" --template next
-```
-
 ## 🚀 Key Features
 
 - **Interactive Editor**: Real-time syntax highlighting, error detection, and automatic formatting/minification.
